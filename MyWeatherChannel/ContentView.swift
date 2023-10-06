@@ -10,8 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.blue, Color("CustomLightBlue")]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
+            BackgroundView(topColor: Color.blue, bottomColor: Color("CustomLightBlue"))
                 
             VStack {
                 Text("Cupertino, CA")
@@ -32,7 +31,8 @@ struct ContentView: View {
                         .font(.system(size: 70, weight: .medium, design: .default))
                         .foregroundStyle(.white)
                 }
-                Spacer()
+                .padding(.bottom, 50)
+                
                 HStack(spacing: 5) {
                     DailyWeatherView(dayOfWeek: "SAT", imageName: "cloud.sun.fill", temperature: 76)
                     DailyWeatherView(dayOfWeek: "SUN", imageName: "cloud.sun.fill", temperature: 80)
@@ -42,6 +42,16 @@ struct ContentView: View {
                     DailyWeatherView(dayOfWeek: "THU", imageName: "cloud.sun.fill", temperature: 80)
                     DailyWeatherView(dayOfWeek: "FRI", imageName: "cloud.sun.fill", temperature: 80)
                 }
+                Spacer()
+                
+                Button("Change Day Time") {
+                    print("Clicked on Change Day Time")
+                }
+                .font(.system(size: 20, weight: .medium, design: .default))
+                .frame(width: 280, height: 50)
+                .background(.white)
+                .cornerRadius(10.0)
+                
                 Spacer()
             }
         }
@@ -75,5 +85,15 @@ struct DailyWeatherView: View {
                 .foregroundStyle(.white)
             
         }
+    }
+}
+
+struct BackgroundView: View {
+    var topColor: Color
+    var bottomColor: Color
+    
+    var body: some View {
+        LinearGradient(gradient: Gradient(colors: [topColor, bottomColor]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .edgesIgnoringSafeArea(.all)
     }
 }
