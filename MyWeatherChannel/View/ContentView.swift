@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
+    var weatherData: [WeatherModel]
     @State private var isNight = false
     
     var body: some View {
@@ -19,13 +20,9 @@ struct ContentView: View {
                 CityTextView(cityText: "Cupertino, CA")
                 TopWeatherStatusView(imageName: isNight ? "moon.stars.fill" : "cloud.sun.fill", temperature: 76)
                 HStack(spacing: 5) {
-                    DailyWeatherView(dayOfWeek: "SAT", imageName: "cloud.sun.fill", temperature: 76)
-                    DailyWeatherView(dayOfWeek: "SUN", imageName: "cloud.sun.fill", temperature: 80)
-                    DailyWeatherView(dayOfWeek: "MON", imageName: "cloud.sun.fill", temperature: 80)
-                    DailyWeatherView(dayOfWeek: "TUE", imageName: "cloud.sun.fill", temperature: 80)
-                    DailyWeatherView(dayOfWeek: "WED", imageName: "cloud.sun.fill", temperature: 80)
-                    DailyWeatherView(dayOfWeek: "THU", imageName: "cloud.sun.fill", temperature: 80)
-                    DailyWeatherView(dayOfWeek: "FRI", imageName: "cloud.sun.fill", temperature: 80)
+                    ForEach(weatherData) { data in
+                        DailyWeatherView(dayOfWeek: data.dayOfWeek, imageName: data.weatherIcon ?? "", temperature: data.temperature)
+                    }
                 }
                 Spacer()
                 
@@ -43,7 +40,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(weatherData: WeatherModel.weatherData)
 }
 
 struct DailyWeatherView: View {
