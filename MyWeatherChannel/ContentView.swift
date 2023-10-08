@@ -8,31 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isNight = false
+    
     var body: some View {
         ZStack {
-            BackgroundView(topColor: Color.blue, bottomColor: Color("CustomLightBlue"))
+            BackgroundView(isNight: isNight)
                 
             VStack {
-                Text("Cupertino, CA")
-                    .font(.system(size: 32, weight: .medium, design: .default))
-                    .foregroundStyle(.white)
-                    .padding()
-                
-                VStack(spacing: 1) {
-                    Image(systemName: "cloud.sun.fill")
-                        .renderingMode(.original)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 180, height: 180)
-                        .foregroundColor(.white)
-                    
-                    // Shift + Option + 8 gives degree(°) symbol
-                    Text("76°")
-                        .font(.system(size: 70, weight: .medium, design: .default))
-                        .foregroundStyle(.white)
-                }
-                .padding(.bottom, 50)
-                
+                CityTextView(cityText: "Cupertino, CA")
+                TopWeatherStatusView(imageName: isNight ? "moon.stars.fill" : "cloud.sun.fill", temperature: 76)
                 HStack(spacing: 5) {
                     DailyWeatherView(dayOfWeek: "SAT", imageName: "cloud.sun.fill", temperature: 76)
                     DailyWeatherView(dayOfWeek: "SUN", imageName: "cloud.sun.fill", temperature: 80)
@@ -44,18 +29,16 @@ struct ContentView: View {
                 }
                 Spacer()
                 
-                Button("Change Day Time") {
-                    print("Clicked on Change Day Time")
+                Button{
+                    isNight.toggle()
+                } label: {
+                    ChangeTimeButton(title: "Change Day Time", textColor: .blue, backgroundColor: .white)
                 }
-                .font(.system(size: 20, weight: .medium, design: .default))
-                .frame(width: 280, height: 50)
-                .background(.white)
-                .cornerRadius(10.0)
+                
                 
                 Spacer()
             }
         }
-        .padding()
     }
 }
 
@@ -89,11 +72,58 @@ struct DailyWeatherView: View {
 }
 
 struct BackgroundView: View {
-    var topColor: Color
-    var bottomColor: Color
+    var isNight: Bool
     
     var body: some View {
-        LinearGradient(gradient: Gradient(colors: [topColor, bottomColor]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        LinearGradient(gradient: Gradient(colors: [isNight ? .black : .blue, isNight ? .gray : Color("CustomLightBlue")]), startPoint: .topLeading, endPoint: .bottomTrailing)
             .edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct CityTextView: View {
+    var cityText: String
+    
+    var body: some View {
+        Text(cityText)
+            .font(.system(size: 32, weight: .medium, design: .default))
+            .foregroundStyle(.white)
+            .padding()
+    }
+}
+
+struct TopWeatherStatusView: View {
+    var imageName: String
+    var temperature: Int
+    
+    var body: some View {
+        VStack(spacing: 1) {
+            Image(systemName: imageName)
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 180, height: 180)
+                .foregroundColor(.white)
+            
+            // Shift + Option + 8 gives degree(°) symbol
+            Text("\(temperature)°")
+                .font(.system(size: 70, weight: .medium, design: .default))
+                .foregroundStyle(.white)
+        }
+        .padding(.bottom, 50)
+    }
+}
+
+struct ChangeTimeButton: View {
+    var title: String
+    var textColor: Color
+    var backgroundColor: Color
+    
+    var body: some View {
+        Text(title)
+        .font(.system(size: 20, weight: .medium, design: .default))
+        .frame(width: 280, height: 50)
+        .background(backgroundColor)
+        .foregroundColor(textColor)
+        .cornerRadius(10.0)
     }
 }
