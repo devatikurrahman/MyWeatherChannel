@@ -22,6 +22,12 @@ struct WeatherModel: Identifiable, Codable {
 }
 
 extension WeatherModel {
+    static var todaysWeather: WeatherModel {
+        WeatherModel(dayOfWeek: "", temperature: 0, weatherIcon: nil)
+    }
+}
+
+extension WeatherModel {
     static var weatherData: [WeatherModel] =
     [
         WeatherModel(dayOfWeek: "SAT", temperature: 60, weatherIcon: "cloud.sun.fill"),
