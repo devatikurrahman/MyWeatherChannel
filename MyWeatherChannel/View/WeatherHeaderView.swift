@@ -12,18 +12,44 @@ struct WeatherHeaderView: View {
     
     var body: some View {
         VStack(spacing: 1) {
-            Image(systemName: weatherNow.weatherIcon ?? "")
-                .renderingMode(.original)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 180, height: 180)
-                .foregroundColor(.white)
+            CityTextView(cityText: "Cupertino, CA")
+            HStack {
+                Text("76°")
+                    .font(.system(size: 70, weight: .medium, design: .default))
+                    .foregroundStyle(.white)
+                    .padding([.top, .bottom])
+                
+                Image(systemName: "cloud.sun.fill")
+                    .renderingMode(.original)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 150, height: 150)
+                    .foregroundColor(.white)
+            }
+            .padding(20)
+            HStack {
+                VStack {
+                    // Shift + Option + 8 gives degree(°) symbol
+                    //Text("\(weatherNow.temperature)°")
+                    
+                    
+                    Text("Temperature")
+                    Text("Temperature")
+                    Text("Feels Like: 32°")
+                }
+                .padding(.horizontal)
+                VStack {
+                    //Image(systemName: weatherNow.weatherIcon ?? "")
+                    
+                    
+                    Text("Temperature")
+                }
+            }
             
-            // Shift + Option + 8 gives degree(°) symbol
-            Text("\(weatherNow.temperature)°")
-                .font(.system(size: 70, weight: .medium, design: .default))
-                .foregroundStyle(.white)
+            
+            
         }
+        .background(.purple)
         .padding(.bottom, 50)
     }
 }
