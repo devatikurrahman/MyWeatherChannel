@@ -10,6 +10,8 @@ import SwiftUI
 struct WeatherView: View {
     
     var weatherData: [WeatherModel]
+    var weatherHourlyData: [WeatherModel]
+    
     @State private var isNight = false
     
     var body: some View {
@@ -17,8 +19,31 @@ struct WeatherView: View {
             BackgroundView(isNight: isNight)
                 
             VStack {
-                CityTextView(cityText: "Cupertino, CA")
-                TopWeatherStatusView(imageName: isNight ? "moon.stars.fill" : "cloud.sun.fill", temperature: 76)
+                //CityTextView(cityText: "Cupertino, CA")
+                //TopWeatherStatusView(imageName: isNight ? "moon.stars.fill" : "cloud.sun.fill", temperature: 76)
+                WeatherHeaderView(weatherNow: weatherData[0])
+                
+                // Hourly forecast
+                Text("Hourly Forecast")
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                    .font(.title3)
+                    .padding(.horizontal, 10)
+                    .foregroundColor(.white)
+                    
+                ScrollView(.horizontal) {
+                    HStack(spacing: 5) {
+                        ForEach(weatherHourlyData) { data in
+                            HourlyWeatherView(dayOfWeek: data.dayOfWeek, imageName: data.weatherIcon ?? "", temperature: data.temperature)
+                        }
+                    }
+                }
+                .padding(.horizontal, 10)
+                .scrollIndicators(.hidden)
+                
+                
+                Spacer()
+                
+                // Seven days forecast
                 HStack(spacing: 5) {
                     ForEach(weatherData) { data in
                         DailyWeatherView(dayOfWeek: data.dayOfWeek, imageName: data.weatherIcon ?? "", temperature: data.temperature)
@@ -40,7 +65,33 @@ struct WeatherView: View {
 }
 
 #Preview {
-    WeatherView(weatherData: WeatherModel.weatherData)
+    WeatherView(weatherData: WeatherModel.weatherData, weatherHourlyData: WeatherModel.hourlyWeatherData)
+}
+
+
+struct HourlyWeatherView: View {
+    var dayOfWeek: String
+    var imageName: String
+    var temperature: Int
+    
+    var body: some View {
+        VStack {
+            Text(dayOfWeek)
+                .font(.system(size: 20, weight: .medium, design: .default))
+                .foregroundStyle(.white)
+            
+            Image(systemName: imageName)
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50, height: 50)
+                .foregroundColor(.white)
+            Text("\(temperature)°")
+                .font(.system(size: 25, weight: .medium, design: .default))
+                .foregroundStyle(.white)
+            
+        }
+    }
 }
 
 struct DailyWeatherView: View {
@@ -82,7 +133,9 @@ struct CityTextView: View {
     
     var body: some View {
         Text(cityText)
-            .font(.system(size: 32, weight: .medium, design: .default))
+        //.system(size: 32, weight: .medium, design: .default)
+        // .custom("Helvetica Neue Thin", size: 32)
+            .font(.system(size: 32, weight: .light, design: .default))
             .foregroundStyle(.white)
             .padding()
     }
