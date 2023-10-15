@@ -21,7 +21,7 @@ struct WeatherModel: Identifiable, Codable {
         if dataFormat == 0 {
             self.dayOfWeek = dayOfWeek
         } else {
-            self.dayOfWeek = dayOfWeek.uppercased()
+            self.dayOfWeek = dayOfWeek.capitalized
         }
         self.temperature = temperature
         self.description = description

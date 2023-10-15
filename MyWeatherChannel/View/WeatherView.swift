@@ -33,7 +33,7 @@ struct WeatherView: View {
                 ScrollView(.horizontal) {
                     HStack(spacing: 5) {
                         ForEach(weatherHourlyData) { data in
-                            HourlyWeatherView(dayOfWeek: data.dayOfWeek, imageName: data.weatherIcon ?? "", temperature: data.temperature)
+                            HourlyWeatherView(dayOfWeek: data.dayOfWeek, imageName: data.weatherIcon ?? "", temperature: data.temperature, description: data.description ?? "")
                         }
                     }
                 }
@@ -44,6 +44,12 @@ struct WeatherView: View {
                 Spacer()
                 
                 // Seven days forecast
+                // Hourly forecast
+                Text("7-Days Forecast")
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                    .font(.title3)
+                    .padding(.horizontal, 10)
+                    .foregroundColor(.white)
                 HStack(spacing: 5) {
                     ForEach(weatherData) { data in
                         DailyWeatherView(dayOfWeek: data.dayOfWeek, imageName: data.weatherIcon ?? "", temperature: data.temperature)
@@ -73,6 +79,7 @@ struct HourlyWeatherView: View {
     var dayOfWeek: String
     var imageName: String
     var temperature: Int
+    var description: String
     
     var body: some View {
         VStack {
@@ -84,11 +91,17 @@ struct HourlyWeatherView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 50, height: 50)
                 .foregroundColor(.white)
-            Text("\(temperature)°")
-                .font(.system(size: 25, weight: .medium, design: .default))
-                .foregroundStyle(.white)
-            
+            if(!description.isEmpty) {
+                Text("\(description)")
+                    .font(.system(size: 23, weight: .medium, design: .default))
+                    .foregroundStyle(.white)
+            } else {
+                Text("\(temperature)°")
+                    .font(.system(size: 23, weight: .medium, design: .default))
+                    .foregroundStyle(.white)
+            }
         }
+        .padding(EdgeInsets(top: 0, leading: 5, bottom: 30, trailing: 10))
     }
 }
 
@@ -100,7 +113,7 @@ struct DailyWeatherView: View {
     var body: some View {
         VStack {
             Text(dayOfWeek)
-                .font(.system(size: 20, weight: .medium, design: .default))
+                .font(.system(size: 25, weight: .medium, design: .default))
                 .foregroundStyle(.white)
             
             Image(systemName: imageName)
@@ -114,6 +127,7 @@ struct DailyWeatherView: View {
                 .foregroundStyle(.white)
             
         }
+        .padding(EdgeInsets(top: 0, leading: 5, bottom: 30, trailing: 10))
     }
 }
 
