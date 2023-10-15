@@ -76,9 +76,7 @@ struct HourlyWeatherView: View {
     
     var body: some View {
         VStack {
-            Text(dayOfWeek)
-                .font(.system(size: 20, weight: .medium, design: .default))
-                .foregroundStyle(.white)
+            TimeCustomText(text: dayOfWeek)
             
             Image(systemName: imageName)
                 .renderingMode(.original)
@@ -177,3 +175,32 @@ struct ChangeTimeButton: View {
         .cornerRadius(10.0)
     }
 }
+
+//struct TimeCustomText: View {
+//    var text: String
+//    var splitText: String {
+//        let suffixString = text.suffix(2)
+//        var splitArray: [String] = []
+//        if(text.lowercased().contains(suffixString.lowercased())) {
+//            splitArray = text.lowercased().split(separator: suffixString.lowercased()).map { String($0) }
+//        }
+//        return splitArray.joined()
+//    }
+//    
+//    var amPMText: String {
+//        String(text.suffix(2))
+//    }
+//        
+//    
+//    var body: some View {
+//        HStack {
+//            Text(splitText)
+//                .font(.system(size: 20, weight: .medium, design: .default))
+//                .foregroundStyle(.white)
+//            Text(amPMText)
+//                .font(.system(size: 20, weight: .medium, design: .default))
+//                .foregroundStyle(.white)
+//            
+//        }
+//    }
+//}

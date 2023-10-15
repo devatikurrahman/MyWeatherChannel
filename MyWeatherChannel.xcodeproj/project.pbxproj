@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		603746DE2AD2B4C20033ECFD /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603746DD2AD2B4C20033ECFD /* WeatherModel.swift */; };
 		603746E22AD2C23A0033ECFD /* WeatherHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603746E12AD2C23A0033ECFD /* WeatherHeaderView.swift */; };
+		604B70DE2ADC2A2A0076EC2E /* TimeCustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604B70DD2ADC2A2A0076EC2E /* TimeCustomText.swift */; };
 		60725AC02AD95A72006205EC /* Helvetica LT Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60725ABF2AD95A72006205EC /* Helvetica LT Light.ttf */; };
 		60725AC42AD96143006205EC /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60725AC32AD96143006205EC /* AppFont.swift */; };
 		609775482ACD6ABB002DF8DA /* MyWeatherChannelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609775472ACD6ABB002DF8DA /* MyWeatherChannelApp.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		603746DD2AD2B4C20033ECFD /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		603746E12AD2C23A0033ECFD /* WeatherHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHeaderView.swift; sourceTree = "<group>"; };
+		604B70DD2ADC2A2A0076EC2E /* TimeCustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCustomText.swift; sourceTree = "<group>"; };
 		60725ABF2AD95A72006205EC /* Helvetica LT Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT Light.ttf"; sourceTree = "<group>"; };
 		60725AC12AD95E49006205EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		60725AC32AD96143006205EC /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				609775492ACD6ABB002DF8DA /* WeatherView.swift */,
 				603746E12AD2C23A0033ECFD /* WeatherHeaderView.swift */,
+				604B70DD2ADC2A2A0076EC2E /* TimeCustomText.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				60725AC42AD96143006205EC /* AppFont.swift in Sources */,
 				603746DE2AD2B4C20033ECFD /* WeatherModel.swift in Sources */,
 				603746E22AD2C23A0033ECFD /* WeatherHeaderView.swift in Sources */,
+				604B70DE2ADC2A2A0076EC2E /* TimeCustomText.swift in Sources */,
 				609775482ACD6ABB002DF8DA /* MyWeatherChannelApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
