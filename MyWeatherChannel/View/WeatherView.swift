@@ -17,54 +17,59 @@ struct WeatherView: View {
     var body: some View {
         ZStack {
             BackgroundView(isNight: isNight)
-                
-            VStack {
-                //CityTextView(cityText: "Cupertino, CA")
-                //TopWeatherStatusView(imageName: isNight ? "moon.stars.fill" : "cloud.sun.fill", temperature: 76)
-                WeatherHeaderView(weatherNow: weatherData[0])
-                
-                // Hourly forecast
-                Text("Hourly Forecast")
-                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                    .font(.title3)
-                    .padding(.horizontal, 10)
-                    .foregroundColor(.white)
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack {
+                    //CityTextView(cityText: "Cupertino, CA")
+                    //TopWeatherStatusView(imageName: isNight ? "moon.stars.fill" : "cloud.sun.fill", temperature: 76)
+                    WeatherHeaderView(weatherNow: weatherData[0])
                     
-                ScrollView(.horizontal) {
-                    HStack(spacing: 5) {
-                        ForEach(weatherHourlyData) { data in
-                            HourlyWeatherView(dayOfWeek: data.dayOfWeek, imageName: data.weatherIcon ?? "", temperature: data.temperature, description: data.description ?? "")
+                    // Hourly forecast
+                    Text("Hourly Forecast")
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                        .font(.title3)
+                        .padding(.horizontal, 10)
+                        .foregroundColor(.white)
+                        
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 5) {
+                            ForEach(weatherHourlyData) { data in
+                                HourlyWeatherView(dayOfWeek: data.dayOfWeek, imageName: data.weatherIcon ?? "", temperature: data.temperature, description: data.description ?? "")
+                            }
                         }
                     }
-                }
-                .padding(.horizontal, 10)
-                .scrollIndicators(.hidden)
-                
-                
-                Spacer()
-                
-                // Seven days forecast
-                // Hourly forecast
-                Text("7-Days Forecast")
-                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                    .font(.title3)
                     .padding(.horizontal, 10)
-                    .foregroundColor(.white)
-                HStack(spacing: 5) {
-                    ForEach(weatherData) { data in
-                        DailyWeatherView(dayOfWeek: data.dayOfWeek, imageName: data.weatherIcon ?? "", temperature: data.temperature)
+                    
+                    
+                    Spacer()
+                    
+                    // Seven days forecast
+                    // Hourly forecast
+                    Text("7-Days Forecast")
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                        .font(.title3)
+                        .padding(.horizontal, 10)
+                        .foregroundColor(.white)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 5) {
+                            ForEach(weatherData) { data in
+                                DailyWeatherView(dayOfWeek: data.dayOfWeek, imageName: data.weatherIcon ?? "", temperature: data.temperature)
+                            }
+                        }
                     }
+                    .padding(.horizontal, 10)
+                    
+                    Spacer()
+                    
+                    Button{
+                        isNight.toggle()
+                    } label: {
+                        ChangeTimeButton(title: "Change Day Time", textColor: .blue, backgroundColor: .white)
+                    }
+                    
+                    
+                    Spacer()
                 }
-                Spacer()
-                
-                Button{
-                    isNight.toggle()
-                } label: {
-                    ChangeTimeButton(title: "Change Day Time", textColor: .blue, backgroundColor: .white)
-                }
-                
-                
-                Spacer()
             }
         }
     }
@@ -125,7 +130,6 @@ struct DailyWeatherView: View {
             Text("\(temperature)°")
                 .font(.system(size: 25, weight: .medium, design: .default))
                 .foregroundStyle(.white)
-            
         }
         .padding(EdgeInsets(top: 0, leading: 5, bottom: 30, trailing: 10))
     }
