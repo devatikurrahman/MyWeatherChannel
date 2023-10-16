@@ -120,7 +120,7 @@ struct WeatherHeaderView: View {
             .padding(EdgeInsets(top: 0, leading: 10, bottom: 3, trailing: 10))
         }
         .background(.clear)
-        .padding(.bottom, 50)
+        .padding(.bottom, 40)
     }
 }
 

@@ -106,7 +106,7 @@ struct HourlyWeatherView: View {
                     .foregroundStyle(.white)
             }
         }
-        .padding(EdgeInsets(top: 0, leading: 5, bottom: 30, trailing: 10))
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 10))
     }
 }
 
@@ -118,7 +118,7 @@ struct DailyWeatherView: View {
     var body: some View {
         VStack {
             Text(dayOfWeek)
-                .font(.system(size: 25, weight: .medium, design: .default))
+                .font(.system(size: 23, weight: .medium, design: .default))
                 .foregroundStyle(.white)
             
             Image(systemName: imageName)
@@ -128,10 +128,10 @@ struct DailyWeatherView: View {
                 .frame(width: 50, height: 50)
                 .foregroundColor(.white)
             Text("\(temperature)°")
-                .font(.system(size: 25, weight: .medium, design: .default))
+                .font(.system(size: 23, weight: .medium, design: .default))
                 .foregroundStyle(.white)
         }
-        .padding(EdgeInsets(top: 0, leading: 5, bottom: 30, trailing: 10))
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 10))
     }
 }
 
