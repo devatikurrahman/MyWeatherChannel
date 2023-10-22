@@ -12,6 +12,7 @@
 		604B70DE2ADC2A2A0076EC2E /* TimeCustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604B70DD2ADC2A2A0076EC2E /* TimeCustomText.swift */; };
 		60725AC02AD95A72006205EC /* Helvetica LT Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60725ABF2AD95A72006205EC /* Helvetica LT Light.ttf */; };
 		60725AC42AD96143006205EC /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60725AC32AD96143006205EC /* AppFont.swift */; };
+		609372662AE530280090F307 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609372652AE530280090F307 /* LocationManager.swift */; };
 		609775482ACD6ABB002DF8DA /* MyWeatherChannelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609775472ACD6ABB002DF8DA /* MyWeatherChannelApp.swift */; };
 		6097754A2ACD6ABB002DF8DA /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609775492ACD6ABB002DF8DA /* WeatherView.swift */; };
 		6097754C2ACD6ABD002DF8DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6097754B2ACD6ABD002DF8DA /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		60725ABF2AD95A72006205EC /* Helvetica LT Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT Light.ttf"; sourceTree = "<group>"; };
 		60725AC12AD95E49006205EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		60725AC32AD96143006205EC /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		609372652AE530280090F307 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		609775442ACD6ABB002DF8DA /* MyWeatherChannel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeatherChannel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		609775472ACD6ABB002DF8DA /* MyWeatherChannelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeatherChannelApp.swift; sourceTree = "<group>"; };
 		609775492ACD6ABB002DF8DA /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				603746DD2AD2B4C20033ECFD /* WeatherModel.swift */,
+				609372652AE530280090F307 /* LocationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				6097754A2ACD6ABB002DF8DA /* WeatherView.swift in Sources */,
 				60725AC42AD96143006205EC /* AppFont.swift in Sources */,
 				603746DE2AD2B4C20033ECFD /* WeatherModel.swift in Sources */,
+				609372662AE530280090F307 /* LocationManager.swift in Sources */,
 				603746E22AD2C23A0033ECFD /* WeatherHeaderView.swift in Sources */,
 				604B70DE2ADC2A2A0076EC2E /* TimeCustomText.swift in Sources */,
 				609775482ACD6ABB002DF8DA /* MyWeatherChannelApp.swift in Sources */,
@@ -339,6 +343,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyWeatherChannel/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app will use the user's current location to show location based weather information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -371,6 +376,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyWeatherChannel/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app will use the user's current location to show location based weather information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -45,7 +45,6 @@ struct WeatherHeaderView: View {
                         .font(.system(size: 20, weight: .light, design: .default))
                         .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(.white)
-                        
                 }
                 .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity)
                 
