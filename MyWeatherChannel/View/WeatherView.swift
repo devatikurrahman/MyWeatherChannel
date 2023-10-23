@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct WeatherView: View {
-    
+    @StateObject var locationManager = LocationManager()
     var weatherData: [WeatherModel]
     var weatherHourlyData: [WeatherModel]
-    
     @State private var isNight = false
     
     var body: some View {
@@ -71,6 +71,10 @@ struct WeatherView: View {
                     Spacer()
                 }
             }
+        }
+        .onAppear {
+            print("onAppear is called.")
+            locationManager.checkIfLocationServiceIsEnabled()
         }
     }
 }

@@ -7,20 +7,24 @@
 
 import CoreLocation
 
-class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
-    private var locationManager = CLLocationManager()
+final class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+    private var locationManager: CLLocationManager?
     @Published var currentLocation: CLLocation?
     @Published var locationCoordinate: CLLocationCoordinate2D?
     
-    override init() {
-        super.init()
-        locationManager.delegate = self
-        //locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //locationManager.startUpdatingLocation()
-        CLLocationManager.locationServicesEnabled()
+    
+    func checkIfLocationServiceIsEnabled() {
+        if(CLLocationManager.locationServicesEnabled()) {
+            self.locationManager = CLLocationManager()
+            self.locationManager?.delegate = self
+            self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        } else {
+            print("Location service is not enabled now on this device. Please check your settings to enable it.")
+        }
     }
     
-    func checkLocationAuthorization() {
+    private func checkLocationAuthorization() {
+        guard let locationManager = locationManager else { return }
         switch locationManager.authorizationStatus {
         case .notDetermined: // Authorization not determined yet.
             locationManager.requestWhenInUseAuthorization()
@@ -33,6 +37,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
             print("You have denied this app location permission. Go into settings to change it.")
         case .authorizedAlways, .authorizedWhenInUse: // Location services are available.
             //enableLocationFeatures()
+            locationManager.startUpdatingLocation()
             break
         @unknown default:
             break
@@ -40,6 +45,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        print("authorizationStatus: \(manager.authorizationStatus)")
         checkLocationAuthorization()
     }
     
@@ -49,5 +55,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         print("Current Location: \(currentLocation!.coordinate.latitude), \(currentLocation!.coordinate.longitude)")
         locationCoordinate = newLocation.coordinate
         print("LocationCoordinate Coordinate: \(locationCoordinate!.latitude), \(locationCoordinate!.longitude)")
+        locationManager?.stopUpdatingLocation()
     }
 }
