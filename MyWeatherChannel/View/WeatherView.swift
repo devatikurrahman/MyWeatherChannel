@@ -10,9 +10,9 @@ import CoreLocation
 
 struct WeatherView: View {
     @StateObject var locationManager = LocationManager()
+    @State private var isNight = false
     var weatherData: [WeatherModel]
     var weatherHourlyData: [WeatherModel]
-    @State private var isNight = false
     
     var body: some View {
         ZStack {

@@ -17,6 +17,7 @@
 		6097754A2ACD6ABB002DF8DA /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609775492ACD6ABB002DF8DA /* WeatherView.swift */; };
 		6097754C2ACD6ABD002DF8DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6097754B2ACD6ABD002DF8DA /* Assets.xcassets */; };
 		6097754F2ACD6ABD002DF8DA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6097754E2ACD6ABD002DF8DA /* Preview Assets.xcassets */; };
+		60C9D6A72AE79D5000116DBD /* WeatherMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C9D6A62AE79D5000116DBD /* WeatherMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		609775492ACD6ABB002DF8DA /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		6097754B2ACD6ABD002DF8DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6097754E2ACD6ABD002DF8DA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		60C9D6A62AE79D5000116DBD /* WeatherMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				609775492ACD6ABB002DF8DA /* WeatherView.swift */,
+				60C9D6A62AE79D5000116DBD /* WeatherMapView.swift */,
 				603746E12AD2C23A0033ECFD /* WeatherHeaderView.swift */,
 				604B70DD2ADC2A2A0076EC2E /* TimeCustomText.swift */,
 			);
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60C9D6A72AE79D5000116DBD /* WeatherMapView.swift in Sources */,
 				6097754A2ACD6ABB002DF8DA /* WeatherView.swift in Sources */,
 				60725AC42AD96143006205EC /* AppFont.swift in Sources */,
 				603746DE2AD2B4C20033ECFD /* WeatherModel.swift in Sources */,
