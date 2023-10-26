@@ -16,7 +16,7 @@ class WeatherAPIService {
         case invalidData
     }
     
-    func getJSON(urlString: String) async throws -> Void {
+    func getJSON(urlString: String) async throws -> WeatherNewModel {
         // Check if string url is validated
         guard let url = URL(string: urlString) else {
             throw APIError.invalidURL
@@ -34,7 +34,9 @@ class WeatherAPIService {
         // Decode the server returned JSON data
         do {
             let decoder = JSONDecoder()
-            
+            return try decoder.decode(WeatherNewModel.self, from: data)
+        } catch {
+            throw APIError.invalidData
         }
         
     }
