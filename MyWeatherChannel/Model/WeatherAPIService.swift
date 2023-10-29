@@ -6,17 +6,14 @@
 //
 
 import Foundation
+import CoreLocation
 
 class WeatherAPIService {
     static let shared = WeatherAPIService()
     
-    enum APIError: Error {
-        case invalidURL
-        case invalidResponse
-        case invalidData
-    }
-    
-    func getJSON(urlString: String) async throws -> WeatherNewModel {
+    func getWeatherJSON(fromLocation location: CLLocationCoordinate2D) async throws -> WeatherNewModel {
+        let urlString = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/\(location.latitude),\(location.longitude)?key=LMVE559F6RKUWVCWLU5TCHUAL"
+        print("Weather API: \(urlString)")
         // Check if string url is validated
         guard let url = URL(string: urlString) else {
             throw APIError.invalidURL
@@ -33,11 +30,17 @@ class WeatherAPIService {
         
         // Decode the server returned JSON data
         do {
-            let decoder = JSONDecoder()
+            
             return try decoder.decode(WeatherNewModel.self, from: data)
         } catch {
             throw APIError.invalidData
         }
         
     }
+    
+    private lazy var decoder: JSONDecoder = {
+        let aDecoder = JSONDecoder()
+        aDecoder.dateDecodingStrategy = .millisecondsSince1970
+        return aDecoder
+    }()
 }

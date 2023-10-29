@@ -76,6 +76,7 @@ struct WeatherView: View {
             print("onAppear is called.")
             locationManager.checkIfLocationServiceIsEnabled()
         }
+        
     }
 }
 

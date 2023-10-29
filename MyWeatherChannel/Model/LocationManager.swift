@@ -56,5 +56,28 @@ final class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObje
         locationCoordinate = newLocation.coordinate
         print("LocationCoordinate Coordinate: \(locationCoordinate!.latitude), \(locationCoordinate!.longitude)")
         locationManager?.stopUpdatingLocation()
+        
+        Task {
+            // Calling Weather API Server to get JSON data
+            //await WeatherAPIService.shared.getWeatherJSON(fromLocation: newLocation.coordinate)
+            do {
+                print("#### Asynchronous called ##### ")
+                // Calling Weather API Server to get JSON data
+                if let coordinate = locationCoordinate {
+                    let weatherJSONData = try await WeatherAPIService.shared.getWeatherJSON(fromLocation: coordinate)
+                    print("queryCost: \(weatherJSONData.queryCost)")
+                    print("address: \(weatherJSONData.address!)")
+                    print("address: \(weatherJSONData.description!)")
+                }
+            } catch APIError.invalidURL {
+                print("Invalid URL")
+            } catch APIError.invalidResponse {
+                print("Invalid Response")
+            } catch APIError.invalidData {
+                print("Invalid JSON Data")
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 }

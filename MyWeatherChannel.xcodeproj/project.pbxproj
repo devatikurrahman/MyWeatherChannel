@@ -14,6 +14,8 @@
 		604B70DE2ADC2A2A0076EC2E /* TimeCustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604B70DD2ADC2A2A0076EC2E /* TimeCustomText.swift */; };
 		60725AC02AD95A72006205EC /* Helvetica LT Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60725ABF2AD95A72006205EC /* Helvetica LT Light.ttf */; };
 		60725AC42AD96143006205EC /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60725AC32AD96143006205EC /* AppFont.swift */; };
+		60756E172AEAC4D600201F77 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60756E162AEAC4D600201F77 /* APIError.swift */; };
+		6075AB062AED64A400E34405 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075AB052AED64A400E34405 /* WeatherViewModel.swift */; };
 		609372662AE530280090F307 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609372652AE530280090F307 /* LocationManager.swift */; };
 		609775482ACD6ABB002DF8DA /* MyWeatherChannelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609775472ACD6ABB002DF8DA /* MyWeatherChannelApp.swift */; };
 		6097754A2ACD6ABB002DF8DA /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609775492ACD6ABB002DF8DA /* WeatherView.swift */; };
@@ -31,6 +33,8 @@
 		60725ABF2AD95A72006205EC /* Helvetica LT Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT Light.ttf"; sourceTree = "<group>"; };
 		60725AC12AD95E49006205EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		60725AC32AD96143006205EC /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		60756E162AEAC4D600201F77 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		6075AB052AED64A400E34405 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		609372652AE530280090F307 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		609775442ACD6ABB002DF8DA /* MyWeatherChannel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeatherChannel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		609775472ACD6ABB002DF8DA /* MyWeatherChannelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeatherChannelApp.swift; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 				603E7AD72AE8EBCA0038C0AD /* WeatherNewModel.swift */,
 				609372652AE530280090F307 /* LocationManager.swift */,
 				603E7AD52AE8E3CB0038C0AD /* WeatherAPIService.swift */,
+				60756E162AEAC4D600201F77 /* APIError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -97,6 +102,14 @@
 			path = HelperClasses;
 			sourceTree = "<group>";
 		};
+		6075AB042AED644C00E34405 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6075AB052AED64A400E34405 /* WeatherViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		6097753B2ACD6ABB002DF8DA = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +134,7 @@
 				60725AC22AD960ED006205EC /* HelperClasses */,
 				603746DA2AD292B50033ECFD /* Model */,
 				603746DB2AD292CF0033ECFD /* View */,
+				6075AB042AED644C00E34405 /* ViewModel */,
 				609775472ACD6ABB002DF8DA /* MyWeatherChannelApp.swift */,
 				6097754B2ACD6ABD002DF8DA /* Assets.xcassets */,
 				6097754D2ACD6ABD002DF8DA /* Preview Content */,
@@ -208,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60C9D6A72AE79D5000116DBD /* WeatherMapView.swift in Sources */,
+				6075AB062AED64A400E34405 /* WeatherViewModel.swift in Sources */,
 				6097754A2ACD6ABB002DF8DA /* WeatherView.swift in Sources */,
 				60725AC42AD96143006205EC /* AppFont.swift in Sources */,
 				603746DE2AD2B4C20033ECFD /* WeatherModel.swift in Sources */,
@@ -217,6 +232,7 @@
 				603E7AD62AE8E3CB0038C0AD /* WeatherAPIService.swift in Sources */,
 				604B70DE2ADC2A2A0076EC2E /* TimeCustomText.swift in Sources */,
 				609775482ACD6ABB002DF8DA /* MyWeatherChannelApp.swift in Sources */,
+				60756E172AEAC4D600201F77 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
